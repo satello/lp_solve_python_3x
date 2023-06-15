@@ -1,6 +1,6 @@
 from lpsolve55 import *
 
-def lp_solve(f = None, a = None, b = None, e = None, vlb = None, vub = None, xint = None, scalemode = None, keep = None):
+def lp_solve(f = None, a = None, b = None, e = None, vlb = None, vub = None, xint = None, scalemode = None, keep = None, timeout = 0):
   """LP_SOLVE  Solves mixed integer linear programming problems.
 
   SYNOPSIS: [obj,x,duals,stat] = lp_solve(f,a,b,e,vlb,vub,xint,scalemode,keep)
@@ -47,6 +47,7 @@ def lp_solve(f = None, a = None, b = None, e = None, vlb = None, vub = None, xin
   lpsolve('set_rh_vec', lp, b)
   lpsolve('set_obj_fn', lp, f)
   lpsolve('set_maxim', lp) # default is solving minimum lp.
+  lpsolve('set_timeout', lp, timeout) # timeout after N seconds
 
   for i in range(m):
     if e[i] < 0:
